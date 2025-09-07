@@ -1,5 +1,5 @@
 # 🌦️ Mausam – Responsive Weather Website
-You can this website on : http://mausam69.netlify.app
+You can check this website on : http://mausam69.netlify.app
 
 This is a fully responsive weather information website built using **HTML**, **CSS**, and **JavaScript**.  
 It provides weather updates for any city, has a modern animated UI, and works smoothly on both desktop and mobile devices.
