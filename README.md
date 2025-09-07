@@ -27,17 +27,32 @@ It provides weather updates for any city, has a modern animated UI, and works sm
 
 ---
 project-root/
+├── index.html          # Home page
+├── connect.html        # Connect page
+├── about.html          # About page
+├── hamburger.html      # Shared navbar HTML fragment
+├── style.css           # Global styles and animations
+├── script.js           # Global JavaScript (menu toggle, API calls)
+├── images/             # All images and icons
+└── README.md           # This file
+
+
+## 📂 Project Structure
+project-root/
 ├── index.html # Home page
 ├── connect.html # Connect page
 ├── about.html # About page
 ├── hamburger.html # Shared navbar HTML fragment
-├── style.css # Global styles and animations
-├── script.js # Global JavaScript (menu toggle, API calls)
+│
+├── css/
+│ └── style.css # Global styles and animations
+│
+├── js/
+│ └── script.js # Global JavaScript (menu toggle, API calls)
+│
 ├── images/ # All images and icons
-└── README.md # This file
-
-## 📂 Project Structure
-
+│
+└── README.md # Documentation
 ---
 
 ## 🔑 API Keys
