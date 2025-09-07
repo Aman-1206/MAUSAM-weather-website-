@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mausam</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/home/logo.png">
+</head>
+
+<body>
+    <div class="navbar search animate from-top" id="navLinks">
+        <div class="logo">
+            <img src="images/home/logo.png" alt="Logo">
+            <span>MAUSAM</span>
+        </div>
+        <div class="navlinks1">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="connect.html">CONNECT</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li>
+                    <div class="search" id="hide">
+                        <div class="search-box">
+                            <form id="homeSearchForm">
+                                <input type="text" name="city" placeholder="Search City..." id="homeCity" required>
+                                <button type="submit" class="searBtn">
+                                    <img src="images/home/Search.png" alt="Search">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="search mobile-search animate from-top">
+        <div class="search-box">
+            <form id="homeSearchForm1">
+                <input type="text" name="city" placeholder="Search City..." id="homeCity1" required>
+                <button type="submit" class="searBtn">
+                    <img src="images/home/Search.png" alt="Search">
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Hamburger icon for mobile -->
+    <nav>
+        <div class="hamburger animate from-top">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <main>
+        <div class="hero-text-connect animate from-bottom delay-3">
+            <p class="main">LET'S CONNECT</p>
+            <ul>
+                <li>
+                    <div class="email">
+                        <a href="#"><img src="images/connect/Email.png"></a>
+                        <p>Email</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="github">
+                        <a href="https://github.com/Aman-1206"><img src="images/connect/GitHub.png"></a>
+                        <p>Github</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="insta">
+                        <a
+                            href="https://www.instagram.com/aman.cpp_?utm_source=ig_web_button_share_sheet&igsh=MWs0cmo4b2E5a202cA=="><img
+                                src="images/connect/Instagram.png"></a>
+                        <p>Instagram</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="discord">
+                        <a href="https://discord.gg/pjCmTjk5Wk"><img src="images/connect/Discord.png"></a>
+                        <p>Discord</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </div>
+        <div class="connection search-connection animate from-right delay-2">
+            <a href="https://github.com/Aman-1206" target="_blank"><img class="github"
+                    src="images/home/GitHub.png"></img></a>
+            <a href="https://www.instagram.com/aman.cpp_?utm_source=ig_web_button_share_sheet&igsh=MWs0cmo4b2E5a202cA=="
+                target="_blank"><img class="insta" src="images/home/Instagram.png"></img></a>
+            <a href="#"><img class="twitter" src="images/home/X.png" target="_blank"></img></a>
+        </div>
+
+    </main>
+    <script>
+
+        const hamburger = document.querySelector('.hamburger');
+        const navlinks = document.querySelector('.navlinks1');
+        const body = document.body;
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navlinks.classList.toggle('active');
+            body.classList.toggle("menu-open");
+        })
+        document.getElementById('homeSearchForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const city = document.getElementById('homeCity').value.trim();
+            if (city) {
+                window.location.href = 'search.html?city=' + encodeURIComponent(city);
+            }
+        });
+        document.getElementById('homeSearchForm1').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const city = document.getElementById('homeCity1').value.trim();
+            if (city) {
+                window.location.href = 'search.html?city=' + encodeURIComponent(city);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

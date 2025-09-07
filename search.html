@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mausam</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/home/logo.png">
+</head>
+
+<body>
+    <div class="navbar search animate from-top" id="navLinks">
+        <div class="logo">
+            <img src="images/home/logo.png" alt="Logo">
+            <span>MAUSAM</span>
+        </div>
+        <div class="navlinks1">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="connect.html">CONNECT</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li>
+                    <div class="search" id="hide">
+                        <div class="search-box">
+                            <form id="homeSearchForm">
+                                <input type="text" name="city" placeholder="Search City..." id="homeCity" required>
+                                <button type="submit" class="searBtn">
+                                    <img src="images/home/Search.png" alt="Search">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="search mobile-search animate from-top">
+        <div class="search-box">
+            <form id="homeSearchForm1">
+                <input type="text" name="city" placeholder="Search City..." id="homeCity1" required>
+                <button type="submit" class="searBtn">
+                    <img src="images/home/Search.png" alt="Search">
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Hamburger icon for mobile -->
+    <nav>
+        <div class="hamburger animate from-top">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <main>
+        <div class="main-text2 squeeze-out animate">
+            <p class="name">DELHI, INDIA</p>
+            <p class="p2">Current Weather & Forecast</p>
+        </div>
+        <div class="connection search-connection animate from-right delay-2">
+            <a href="https://github.com/Aman-1206" target="_blank"><img class="github"
+                    src="images/home/GitHub.png"></img></a>
+            <a href="https://www.instagram.com/aman.cpp_?utm_source=ig_web_button_share_sheet&igsh=MWs0cmo4b2E5a202cA=="
+                target="_blank"><img class="insta" src="images/home/Instagram.png"></img></a>
+            <a href="#"><img class="twitter" src="images/home/X.png" target="_blank"></img></a>
+        </div>
+        <div class="main-weather animate from-bottom delay-3">
+            <div class="temp-wrapper">
+                <div class="temp">
+                    <img src="images/search/Sun.png">
+                    <p class="temperature">24°C</p>
+                </div>
+            </div>
+
+            <div class="main-weather-mid">
+                <div class="status">
+                    <img src="images/search/Sun2.png">
+                    <p class="stats">Sunny</p>
+                </div>
+                <div class="humidity">
+                    <img src="images/search/drop.png">
+                    <p class="humid">68%</p>
+                </div>
+            </div><br>
+            <div class="main-weather-bottom">
+                <div class="feels">
+                    <img src="images/search/Temperature.png">
+                    <div class="like">
+                        <pre>Feels Like</pre>
+                        <p class="feels-like">29°C</p>
+                    </div>
+                </div>
+                <div class="wind">
+                    <img src="images/search/Wind.png">
+                    <p class="windspeed">12km/h</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const city = params.get('city');
+
+        if (city) {
+            checkWeather(city);      // load what the user typed
+        } else {
+            checkWeather("Delhi");   // fallback default only if no query string
+        }
+        // Add this script to search.html, about.html, and connect.html
+        function toggleMenu() {
+            const navLinks = document.querySelector('.navbar2');
+            const hamburger = document.getElementById('hamburger');
+
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        }
+        const hamburger = document.querySelector('.hamburger');
+        const navlinks = document.querySelector('.navlinks1');
+        const body = document.body;
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navlinks.classList.toggle('active');
+            body.classList.toggle("menu-open");
+        })
+        document.getElementById('homeSearchForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const city = document.getElementById('homeCity').value.trim();
+            if (city) {
+                window.location.href = 'search.html?city=' + encodeURIComponent(city);
+            }
+        });
+        document.getElementById('homeSearchForm1').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const city = document.getElementById('homeCity1').value.trim();
+            if (city) {
+                window.location.href = 'search.html?city=' + encodeURIComponent(city);
+            }
+        });
+
+        searchBox.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault(); // stop form submit
+                checkWeather(searchBox.value.trim());
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mausam</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/home/logo.png">
+</head>
+
+<body>
+    <div class="navbar search animate from-top" id="navLinks">
+        <div class="logo">
+            <img src="images/home/logo.png" alt="Logo">
+            <span>MAUSAM</span>
+        </div>
+        <div class="navlinks1">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="connect.html">CONNECT</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li>
+                    <div class="search " id="hide">
+                        <div class="search-box">
+                            <form id="homeSearchForm">
+                                <input type="text" name="city" placeholder="Search City..." id="homeCity" required>
+                                <button type="submit">
+                                    <img src="images/home/Search.png" alt="Search">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="search mobile-search animate from-top">
+        <div class="search-box">
+            <form id="homeSearchForm1">
+                <input type="text" name="city" placeholder="Search City..." id="homeCity1" required>
+                <button type="submit">
+                    <img src="images/home/Search.png" alt="Search">
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Hamburger icon for mobile -->
+    <nav>
+        <div class="hamburger animate from-top">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <main>
+        <div class="hero-text animate from-bottom delay-3">
+            <div class="t1">MAUSAM</div>
+            <div class="t2">WEATHER</div>
+            <div class="t4">We Bring Most Accurate Information To You</div>
+        </div>
+
+        <div class="fact-box animate from-left delay-1">
+            <div class="fact-image">
+                <img id="factImg" src="images/home/facts.png" alt="Fact Image">
+            </div>
+            <div class="fact-content">
+                <h3 id="factNumber">01.</h3>
+                <p id="factText">
+                    The hottest temperature ever recorded on Earth was 56.7°C in Death Valley, USA (1913).
+                </p>
+
+                <div class="fact-controls">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <button class="arrow left" id="prevFact">←</button>
+                    <button class="arrow right" id="nextFact">→</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="connection search-connection animate from-right delay-2">
+            <a href="https://github.com/Aman-1206" target="_blank">
+                <img class="github" src="images/home/GitHub.png" alt="GitHub">
+            </a>
+            <a href="https://www.instagram.com/aman.cpp_?utm_source=ig_web_button_share_sheet&igsh=MWs0cmo4b2E5a202cA=="
+                target="_blank">
+                <img class="insta" src="images/home/Instagram.png" alt="Instagram">
+            </a>
+            <a href="#" target="_blank">
+                <img class="twitter" src="images/home/X.png" alt="Twitter">
+            </a>
+        </div>
+    </main>
+
+    <script>
+
+        // Search form submit handler
+        document.getElementById('homeSearchForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const city = document.getElementById('homeCity').value.trim();
+            if (city) {
+                window.location.href = 'search.html?city=' + encodeURIComponent(city);
+            }
+        });
+        document.getElementById('homeSearchForm1').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const city = document.getElementById('homeCity1').value.trim();
+            if (city) {
+                window.location.href = 'search.html?city=' + encodeURIComponent(city);
+            }
+        });
+        // Facts box
+        const facts = [
+            {
+                img: "images/home/facts.png",
+                text: "The hottest temperature ever recorded on Earth was 56.7°C in Death Valley, USA (1913)."
+            },
+            {
+                img: "images/home/fact2.png",
+                text: "The coldest recorded temperature was −89.2°C in Vostok Station, Antarctica (1983)."
+            },
+            {
+                img: "images/home/fact3.png",
+                text: "Mount Everest grows about 4 millimeters higher every year due to tectonic activity."
+            }
+        ];
+
+        let currentIndex = 0;
+        const factImg = document.getElementById("factImg");
+        const factText = document.getElementById("factText");
+        const factNumber = document.getElementById("factNumber");
+        const dots = document.querySelectorAll('.dot');
+
+        function showFact(index) {
+            const fact = facts[index];
+            factImg.src = fact.img;
+            factText.textContent = fact.text;
+            factNumber.textContent = (index + 1).toString().padStart(2, '0') + ".";
+
+        }
+
+        // Initial display
+        showFact(currentIndex);
+
+        // Next fact button
+        document.getElementById("nextFact").addEventListener("click", () => {
+            currentIndex++;
+            if (currentIndex >= facts.length) currentIndex = 0;
+            showFact(currentIndex);
+        });
+
+        // Previous fact button
+        document.getElementById("prevFact").addEventListener("click", () => {
+            currentIndex--;
+            if (currentIndex < 0) currentIndex = facts.length - 1;
+            showFact(currentIndex);
+        });
+
+
+        // Auto-rotate facts every 5 seconds
+        setInterval(() => {
+            currentIndex++;
+            if (currentIndex >= facts.length) currentIndex = 0;
+            showFact(currentIndex);
+        }, 5000);
+        const hamburger = document.querySelector('.hamburger');
+        const navlinks = document.querySelector('.navlinks1');
+        const body = document.body;
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navlinks.classList.toggle('active');
+            body.classList.toggle("menu-open"); // add/remove class on body
+        })
+        
+    </script>
+</body>
+
+</html>
